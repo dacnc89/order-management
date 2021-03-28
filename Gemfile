@@ -34,6 +34,7 @@ gem 'devise'
 gem 'ransack'
 gem 'kaminari-bootstrap', '~> 0.1.3'
 gem 'kaminari'
+gem 'kaminari-bootstrap', '~> 0.1.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

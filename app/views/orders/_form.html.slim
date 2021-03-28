@@ -21,21 +21,21 @@
             | User
         .col-8
           .input-group.mb-3
-            = f.text_field :user_id
+            = f.text_field :user_id, disabled: true
       .row
         .col-3
           label
             | Total Fee
         .col-8
           .input-group.mb-3
-            = f.text_field :total
+            = f.text_field :total, disabled: true
       .row
         .col-3
           label
             | Ship to
         .col-8
           .input-group.mb-3
-            = f.text_field :ship_to
+            = f.text_field :ship_to, disabled: true
       / .field
       /   = f.label :status
       /   = f.number_field :status

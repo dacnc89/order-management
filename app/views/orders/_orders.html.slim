@@ -11,7 +11,7 @@
               | Status
           th.ordrer_user_col.text-center
             = sort_link @q, :user_id,  {}, { :remote => true, :method => :get } do
-              | User
+              | User Id
           th.order_total_col.text-center
             = sort_link @q, :total, {}, { :remote => true, :method => :get }
               | Fee
@@ -20,29 +20,22 @@
               | Actions
         tr
           th= f.text_field :id_eq, class: "form-control"
-          th= f.select :status_eq, Order.statuses.map{|status| [status[0].humanize, status[1]]}, class: "form-control"
-          / th= f.text_field :status_eq, class: "form-control"
+          th= f.select :status_eq, Order.statuses.map{|status| [status[0].humanize, status[1]]}, class: "form-control", include_blank: 'All'
           th= f.text_field :user_id_eq, class: "form-control"
           th= f.text_field :total_eq, class: "form-control"
-          / th= f.text_field :shopify_product_id_eq, class: "form-control"
-          / th= f.text_field :shopify_variant_id_eq, class: "form-control"
-          / th= f.text_field :lightspeed_description_cont, class: "form-control"
           th.text-center
             = f.submit class: "btn btn-info"
       tbody
         - @orders.each do |order|
           tr
             td.order_id_body_col
-              = link_to order.try(:id), "htttp://localhost:3000/orders/#{order.id}"
+              = link_to order.try(:id), "http://localhost:3000/orders/#{order.id}"
             td.order_status_body_col
               = order.status.humanize
             td.order_user_body_col
-              = link_to order.try(:id), "htttp://localhost:3000/users/#{order.user_id}"
-            / td.order_created_at_body_col
-            /   = order.try(:created_at)
+              = order.user.try(:id)
             td.order_fee_body_col
-              = order.try(:total)
+              = "$ #{order.try(:total)}"
             td.order_updated_at_body_col.text-center
               = link_to 'Edit', edit_order_path(id: order.id)
-        /! button group
-        = paginate @orders
+    = paginate @orders

@@ -1,18 +1,19 @@
 .container
   .row.justify-content-center
-    .order-form.mt-5
-      .row.justify-content-center
-        h4 Order Information
-      / = form_for @order do |f|
+    .mt-5
       p#notice = notice
 
+  .row.justify-content-center
+    .order-form
+      .row.justify-content-center
+        h4 Order Information
       .row
         .col-5
           label
             | Status
         .col-5
           .input-group.mb-3
-            = @order.status
+            = @order.status.humanize
       .row
         .col-5
           label
@@ -26,7 +27,7 @@
             | Total
         .col-5
           .input-group.mb-3
-            = @order.total
+            = "$ #{@order.total}"
       .row
         .col-5
           label
@@ -34,55 +35,7 @@
         .col-5
           .input-group.mb-3
             = @order.ship_to
-      / .field
-      /   = f.label :status
-      /   = f.number_field :status
-      / .field
-      /   = f.label :user
-      /   = f.text_field :user
       .row.form-group.justify-content-center
         => link_to 'Edit', edit_order_path(@order)
         '|
         =< link_to 'Back', orders_path
-      / = form_for @order do |f|
-      /   p#notice = notice
-
-      /   .row
-      /     .col-3
-      /       label
-      /         | Status
-      /     .col-8
-      /       .input-group.mb-3
-      /         = f.select :status, Order.statuses.keys.map{|status| [status.humanize, status]}
-      /   .row
-      /     .col-3
-      /       label
-      /         | User
-      /     .col-8
-      /       .input-group.mb-3
-      /         = f.text_field :user_id
-      /   .row
-      /     .col-3
-      /       label
-      /         | Total Fee
-      /     .col-8
-      /       .input-group.mb-3
-      /         = f.text_field :total
-      /   .row
-      /     .col-3
-      /       label
-      /         | Ship to
-      /     .col-8
-      /       .input-group.mb-3
-      /         = f.text_field :ship_to
-      /   / .field
-      /   /   = f.label :status
-      /   /   = f.number_field :status
-      /   / .field
-      /   /   = f.label :user
-      /   /   = f.text_field :user
-      /   .row.form-group.justify-content-center
-      /     .col-sm-6
-      /       => link_to 'Edit', edit_order_path(@order)
-      /       '|
-      /       =< link_to 'Back', orders_path
