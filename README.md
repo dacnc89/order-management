@@ -11,9 +11,13 @@ Things you may want to cover:
   `6.0.1`
 
 * System dependencies
+  Ubuntu 20.04, MySQL 8.0.23
+
+* `bundle install` is needed.
 
 * Configuration
-  edit `database.yml` is needed. 
+  edit `database.yml` is needed.
+  
 * Database creation
   run `rails  db:create` ; `railse db:migrate`
 
