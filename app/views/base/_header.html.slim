@@ -17,7 +17,7 @@ nav.main-header.navbar.navbar-expand.navbar-white.navbar-light
       li.nav-item
         = active_link_to raw('<i class="nav-icon fas fa-sign-out-alt" aria-hidden="true"></i>'), destroy_user_session_path, method: :delete, class: "nav-link"
     - else
-        = active_link_to raw('<p>Sign Up</p>'), new_user_registration_path, class: "nav-link"
+        = active_link_to raw('<p>Login</p>'), user_session_path, class: "nav-link"
 
 
     / li.nav-item

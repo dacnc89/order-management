@@ -1,0 +1,11 @@
+- if resource.errors.any?
+  - messages = resource.errors.full_messages
+  - if messages.count > 1
+    #error_explanation
+      ul
+        - messages.each do |message|
+          li
+            = message
+  - else
+    .flash.alert.alert-danger
+      = messages.first

@@ -1,0 +1,24 @@
+.container
+  .row.justify-content-center
+    h1 Listing orders
+
+table
+  thead
+    tr
+      th Status
+      th User
+      th
+      th
+      th
+
+  tbody
+    - @orders.each do |order|
+      tr
+        td = order.status
+        td = order.user
+        td = link_to 'Show', order
+        td = link_to 'Edit', edit_order_path(order)
+        td = link_to 'Destroy', order, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+

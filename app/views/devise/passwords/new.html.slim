@@ -1,0 +1,45 @@
+.container
+  .row.justify-content-center
+    .col-md-12
+      .login-logo
+        a href="/"
+          span.brand-text.font-weight-light
+            Order Management
+            / = image_tag("logo.png", {:alt => "digiConnect"})
+  .row.justify-content-center
+    .col-md-6
+      .card-body.login-card-body
+        p.login-box-msg
+          | Forgot your password?
+          = form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post}) do |f|
+            - flash.each do |message_type, message|
+              - if message.respond_to?('each')
+                - if message.count > 1
+                  #error_explanation
+                    ul
+                      - message.each do |m|
+                        = content_tag(:li, m)
+                - else
+                  - message.each do |m|
+                    = content_tag(:div, m, class: "flash alert alert-danger")
+              - else
+                = content_tag(:div, message, class: "#{flash_class(message_type)}")
+            = render "devise/shared/error_messages", resource: resource
+            .row
+              .col-3
+                label
+                  | Email Address
+              .col-8
+                .input-group.mb-3
+                  = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email Address", required: true, class: "form-control"
+                  .input-group-append
+                    .input-group-text
+                      span.fas.fa-envelope
+              .col-1
+                label
+                  | *
+            .row.form-group.justify-content-center
+              .col-sm-6
+                button.btn.btn-info.btn-block.btn-flat[type="submit" style="background-color: #269d76 !important"]
+                  | Send Me The Instructions
+

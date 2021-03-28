@@ -1,0 +1,59 @@
+/ h2
+/   | Log in
+.container
+  .row.justify-content-center
+    .col-xs-12.mt-5
+      .card-body.login-card-body
+        p.login-box-msg Admin Login
+
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          = render "devise/shared/error_messages", resource: resource
+          - flash.each do |message_type, message|
+            - if message != "You need to sign in or sign up before continuing." || message != "Your password has been changed successfully. You are now signed in."
+              - if message.respond_to?('each')
+                - if message.count > 1
+                  #error_explanation
+	                  ul
+                      - message.each do |m|
+                        = content_tag(:li, m)
+                - else
+                  - message.each do |m|
+                    = content_tag(:div, m, class: "flash alert alert-danger")
+              - else
+                = content_tag(:div, message, class: "#{flash_class(message_type)}")
+          .row
+            .col-3
+              label
+                | Email Address
+            .col-8
+              .imput-group.mb3
+                = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control", required: true
+                / .input-group-append
+                /   .input-group-text
+                /     span.fas.fa-envelope
+          .row
+            .col-3
+              label
+                | Password
+            .col-8
+              .input-group.mb-3
+                = f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: "form-control", required: true
+          / .field
+            / = f.label :password
+            / br
+            / = f.password_field :password, autocomplete: "current-password"
+          - if devise_mapping.rememberable?
+            .row
+              .remember-me.forrm-group.col-lg-8.offset-lg-5
+                = f.check_box :remember_me, id: "remember", class: "form-check-input"
+                = f.label :remember_me, class: "form-check-label"
+          .row.form-group.justify-content-center
+            .col-lg-8.offset-lg-2
+              button.btn.btn-info.btn-block.btn-flat[type="submit"]
+                | Submit
+          .row.form-group
+            .forgot-password.offset-lg-5
+              a href="password/new" Forgot you password?
+          / .actions
+          /   = f.submit "Log in"
+        / = render "devise/shared/links"

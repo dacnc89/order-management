@@ -1,0 +1,33 @@
+.row.justify-content-center
+  .order-form
+    = form_for @order do |f|
+      - if @order.errors.any?
+        #error_explanation
+          h2 = "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
+          ul
+            - @order.errors.full_messages.each do |message|
+              li = message
+
+      .row
+        .col-3
+          label
+            | Status
+        .col-8
+          .input-group.mb-3
+            = f.select :status, Order.statuses.keys.map{|status| [status.humanize, status]}
+      .row
+        .col-3
+          label
+            | User
+        .col-8
+          .input-group.mb-3
+            = f.text_field :user_id
+      / .field
+      /   = f.label :status
+      /   = f.number_field :status
+      / .field
+      /   = f.label :user
+      /   = f.text_field :user
+      .row.form-group.justify-content-center
+        .col-sm-6
+          .actions = f.submit

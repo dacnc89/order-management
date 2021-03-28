@@ -1,0 +1,32 @@
+.container
+  .row.justify-content-center
+    .order-form.mt-5
+      h4 Order Information
+      = form_for @order do |f|
+        p#notice = notice
+
+        .row
+          .col-3
+            label
+              | Status
+          .col-8
+            .input-group.mb-3
+              = f.select :status, Order.statuses.keys.map{|status| [status.humanize, status]}
+        .row
+          .col-3
+            label
+              | User
+          .col-8
+            .input-group.mb-3
+              = f.text_field :user_id
+        / .field
+        /   = f.label :status
+        /   = f.number_field :status
+        / .field
+        /   = f.label :user
+        /   = f.text_field :user
+        .row.form-group.justify-content-center
+          .col-sm-6
+            => link_to 'Edit', edit_order_path(@order)
+            '|
+            =< link_to 'Back', orders_path

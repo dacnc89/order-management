@@ -4,3 +4,31 @@
 @import "admin-lte";
 /* For AdminLTE 3 */
 @import '@fortawesome/fontawesome-free';
+
+.card-body .container-fluid {
+  color: red;
+  padding: 35px;
+  margin-top: 50px;
+}
+
+a:hover, a:focus {
+  background-color: transparent;
+  // color: transparent;
+  text-decoration: underline;
+}
+
+.nav-link:hover, .nav-link:focus {
+  color: transparent;
+}
+
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+  color: #17a2b8;
+  background-color: transparent;
+}
+
+@media (max-width: 992px) {
+  .forgot-password, .remember-me {
+    width: 100%;
+    text-align: center;
+  }
+}
