@@ -22,6 +22,20 @@
         .col-8
           .input-group.mb-3
             = f.text_field :user_id
+      .row
+        .col-3
+          label
+            | Total Fee
+        .col-8
+          .input-group.mb-3
+            = f.text_field :total
+      .row
+        .col-3
+          label
+            | Ship to
+        .col-8
+          .input-group.mb-3
+            = f.text_field :ship_to
       / .field
       /   = f.label :status
       /   = f.number_field :status

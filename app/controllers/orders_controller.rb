@@ -3,7 +3,8 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
-    @orders = Order.all
+    @q = Order.ransack(params[:q])
+    @orders = @q.result.includes(:user).page(params[:page])
   end
 
   # GET /orders/1 or /orders/1.json
@@ -64,6 +65,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:status, :user_id)
+      params.require(:order).permit(:status, :user_id, :total, :ship_to)
     end
 end
