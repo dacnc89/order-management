@@ -2,10 +2,33 @@ doctype html
 html
   head
     title
-      | OrderManagement
+      |  Rails6 AdminLTE 3.0
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  body
-    = yield
+  body.hold-transition.sidebar-mini.layout-fixed[data-scrollbar-auto-hide="n"]
+    .wrapper
+      = render "base/header"
+      = render "base/sidebar"
+      .content-wrapper
+        .content-header
+          .container-fluid
+            .row.mb-2
+              .col-sm-6
+                h1.m-0.text-dark
+                  | Starter Page
+              .col-sm-6
+                ol.breadcrumb.float-sm-right
+                  li.breadcrumb-item
+                    a[href="#"]
+                      | Home
+                  li.breadcrumb-item.active
+                    | Starter Page
+        .content.container-fluid
+          .container-fluid
+            = yield
+      = render "base/footer"
+      = render "base/control_sidebar"
+      div
+

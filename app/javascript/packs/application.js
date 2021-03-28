@@ -7,6 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require('admin-lte');
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -15,3 +16,12 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+import 'bootstrap';
+// app/javascript/packs/application.js
+// ......
+import '../stylesheets/application'; // This file will contain your custom CSS
+import "@fortawesome/fontawesome-free/js/all";
+
+document.addEventListener("turbolinks:load", () => {
+  $('[data-toggle="tooltip"]').tooltip()
+});
